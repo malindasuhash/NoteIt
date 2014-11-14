@@ -1,0 +1,16 @@
+{
+    "manifest_version": 2,
+
+    "name": "NoteIt!",
+    "description": "Extension for registering notes for NoteIt! app.",
+    "version": "0.1",
+
+    "permissions": [
+        "contextMenus"
+    ],
+
+    "background": {
+        "scripts": [ "main.js" ],
+        "persistent": false
+    }
+}
