@@ -1,14 +1,16 @@
-// Context menu for selection
+﻿/// <reference path="tds/google-extensions.d.ts" />
 
-var appInfo = {
-    name: 'NoteIt!',
-    contextId: 'noteItId'
-};
+var noteIt;
+(function (noteIt) {
+    var MenuBuilder = (function () {
+        function MenuBuilder() {
+        }
+        MenuBuilder.prototype.build = function () {
+            chrome.contextMenus.create({ id: 'noteId', title: 'NoteIt!', contexts: ['selection'] });
+        };
+        return MenuBuilder;
+    })();
 
-(function () {
-    chrome.contextMenus.create({
-        "id": appInfo.contextId,
-        "title": appInfo.name,
-        "contexts": ['selection']
-    });
-})();
+    var builder = new MenuBuilder();
+    builder.build();
+})(noteIt || (noteIt = {}));
