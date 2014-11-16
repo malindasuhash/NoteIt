@@ -6,9 +6,14 @@ module noteIt {
             var menuRef = chrome.contextMenus.create({ id: 'noteId', title: 'NoteIt!', contexts: ['selection'] });
             chrome.contextMenus.onClicked.addListener(this.callback);
         }
-        private callback(info: any, tab: any) {
-            var result = prompt('Subject for "' + info.selectionText + '" ?');
-            console.log(result);
+        private callback(info: infoContext, tab: any) {
+            var selectedText = info.selectionText;
+            var optionalSubject: string = selectedText.length > 30 ?
+                selectedText.substr(0, 30) + '...' :
+                selectedText;
+
+            var response = prompt('Subject for "' + info.selectionText + '" ?', optionalSubject);
+            console.log(response);
         }
     }
 

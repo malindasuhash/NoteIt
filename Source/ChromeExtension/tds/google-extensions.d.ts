@@ -12,5 +12,9 @@ interface creator {
 }
 
 interface addingListener {
-    addListener(func: (info: any, tabs?: any) => void): void;
+    addListener(func: (info: infoContext, tabs?: any) => void): void;
+}
+
+interface infoContext {
+    selectionText: string;
 }

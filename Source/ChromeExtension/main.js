@@ -9,8 +9,11 @@ var noteIt;
             chrome.contextMenus.onClicked.addListener(this.callback);
         };
         MenuBuilder.prototype.callback = function (info, tab) {
-            var result = prompt('Subject for "' + info.selectionText + '" ?');
-            console.log(result);
+            var selectedText = info.selectionText;
+            var optionalSubject = selectedText.length > 30 ? selectedText.substr(0, 30) + '...' : selectedText;
+
+            var response = prompt('Subject for "' + info.selectionText + '" ?', optionalSubject);
+            console.log(response);
         };
         return MenuBuilder;
     })();
