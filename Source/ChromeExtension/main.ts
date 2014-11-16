@@ -1,11 +1,13 @@
 ﻿/// <reference path="tds/google-extensions.d.ts" />
 
-declare var chrome: chrome;
-
 module noteIt {
     class MenuBuilder {
         build() {
-            chrome.contextMenus.create({ id: 'noteId', title: 'NoteIt!', contexts: ['selection'] });
+            var menuRef = chrome.contextMenus.create({ id: 'noteId', title: 'NoteIt!', contexts: ['selection'] });
+            chrome.contextMenus.onClicked.addListener(this.callback);
+        }
+        private callback(info: any, tab: any) {
+            console.log(info.selectionText);
         }
     }
 
