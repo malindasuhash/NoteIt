@@ -9,7 +9,8 @@ var noteIt;
             chrome.contextMenus.onClicked.addListener(this.callback);
         };
         MenuBuilder.prototype.callback = function (info, tab) {
-            console.log(info.selectionText + ' ' + tab);
+            var result = prompt('Subject for "' + info.selectionText + '" ?');
+            console.log(result);
         };
         return MenuBuilder;
     })();

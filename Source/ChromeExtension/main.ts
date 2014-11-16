@@ -7,7 +7,8 @@ module noteIt {
             chrome.contextMenus.onClicked.addListener(this.callback);
         }
         private callback(info: any, tab: any) {
-            console.log(info.selectionText);
+            var result = prompt('Subject for "' + info.selectionText + '" ?');
+            console.log(result);
         }
     }
 
