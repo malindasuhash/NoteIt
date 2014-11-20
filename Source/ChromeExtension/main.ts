@@ -18,10 +18,10 @@ module noteIt {
                 selectedText;
 
             var response = prompt('Subject for "' + info.selectionText + '" ?', optionalSubject);
+            
             // When the response is null, this means the person clicked "cancel" or used
             // the "X" in the dialog.
             // In this case we do not need to store the content.
-
             if (response != null) {
                 // publish a message to store
                 chrome.runtime.sendMessage({ address: "msg/store", content: selectedText });
@@ -41,6 +41,7 @@ module noteIt {
     var handler = new MessageHandler();
     handler.register();
 
+    // Builds and registers the menu item
     var builder = new MenuBuilder();
     builder.build();
 }
