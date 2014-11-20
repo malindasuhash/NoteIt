@@ -1,8 +1,9 @@
 ﻿/// <reference path="tds/google-extensions.d.ts" />
 
+// Full API for Google Extensions: https://developer.chrome.com/extensions/api_index
 module noteIt {
     
-    // Responsible for building, and handling the callback of the selection.
+    // Responsible for building, and handling the callback of the selection.    
     class MenuBuilder {
         build() {
             var menuRef = chrome.contextMenus.create({ id: 'noteId', title: 'NoteIt!', contexts: ['selection'] });
@@ -29,6 +30,7 @@ module noteIt {
     }
 
     // Registers the callback from the menu.
+    // Reference: https://developer.chrome.com/extensions/messaging
     class MessageHandler {
         public register() {
             chrome.runtime.onMessage.addListener((r) => { console.log('received ' + r.address + ' ' + r.content) });
