@@ -4,6 +4,7 @@ declare var chrome: chrome;
 
 interface chrome {
     contextMenus: creator;
+    runtime: messaging
 }
 
 interface creator {
@@ -17,4 +18,18 @@ interface addingListener {
 
 interface infoContext {
     selectionText: string;
+}
+
+interface messaging {
+    sendMessage(data: messageContext);
+    onMessage: msgCallbackLister;
+}
+
+interface messageContext {
+    address: string;
+    content: string
+}
+
+interface msgCallbackLister {
+    addListener(func: (request: messageContext) => void): void;
 }
