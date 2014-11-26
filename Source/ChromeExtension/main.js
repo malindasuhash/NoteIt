@@ -1,4 +1,6 @@
 ﻿/// <reference path="tds/google-extensions.d.ts" />
+/// <reference path="eventaggregator.ts" />
+// Full API for Google Extensions: https://developer.chrome.com/extensions/api_index
 var noteIt;
 (function (noteIt) {
     // Responsible for building, and handling the callback of the selection.
@@ -22,28 +24,18 @@ var noteIt;
             // In this case we do not need to store the content.
             if (response != null) {
                 // publish a message to store
-                chrome.runtime.sendMessage({ address: "msg/store", content: selectedText });
+                eventing.publish({ address: "msg.new", content: selectedText });
             }
         };
         return MenuBuilder;
     })();
 
-    // Registers the callback from the menu.
-    var MessageHandler = (function () {
-        function MessageHandler() {
-        }
-        MessageHandler.prototype.register = function () {
-            chrome.runtime.onMessage.addListener(function (r) {
-                console.log('received ' + r.address + ' ' + r.content);
-            });
-        };
-        return MessageHandler;
-    })();
+    var eventing = new noteIt.EventAggregator();
+    eventing.register('msg.new', function (r) {
+        console.log('received ' + r.address + ' ' + r.content);
+    });
 
-    // Register message handler
-    var handler = new MessageHandler();
-    handler.register();
-
+    // Builds and registers the menu item
     var builder = new MenuBuilder();
     builder.build();
 })(noteIt || (noteIt = {}));

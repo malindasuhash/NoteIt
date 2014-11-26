@@ -10,7 +10,7 @@
     ],
 
     "background": {
-        "scripts": [ "main.js" ],
+        "scripts": ["eventAggregator.js", "main.js" ],
         "persistent": false
     }
 }

@@ -30,6 +30,17 @@ interface messageContext {
     content: string
 }
 
+interface messageContextAggregator {
+    address: string;
+    content: string;
+    aggre: Aggregator;
+}
+
+interface Aggregator {
+    handlers: EventInfo[]
+}
+
 interface msgCallbackLister {
     addListener(func: (request: messageContext) => void): void;
+    addListener(func: (request: messageContextAggregator) => void): void;
 }
