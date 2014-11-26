@@ -37,7 +37,12 @@ interface messageContextAggregator {
 }
 
 interface Aggregator {
-    handlers: EventInfo[]
+    handlers: eventInfo[]
+}
+
+interface eventInfo {
+    eventName: string;
+    callback: (args: messageContext) => void
 }
 
 interface msgCallbackLister {
