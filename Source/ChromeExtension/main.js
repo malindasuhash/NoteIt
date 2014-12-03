@@ -25,7 +25,7 @@ var noteIt;
             // In this case we do not need to store the content.
             if (response != null) {
                 // publish a message to store
-                eventing.publish({ address: "msg.new", content: selectedText });
+                eventing.publish({ address: "msg.new", content: selectedText, pageUrl: info.pageUrl });
             }
         };
         return MenuBuilder;

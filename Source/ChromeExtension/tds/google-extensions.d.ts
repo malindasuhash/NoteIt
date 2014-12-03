@@ -18,6 +18,7 @@ interface addingListener {
 
 interface infoContext {
     selectionText: string;
+    pageUrl?: string;
 }
 
 interface messaging {
@@ -27,7 +28,8 @@ interface messaging {
 
 interface messageContext {
     address: string;
-    content: string
+    content: string;
+    pageUrl?: string;
 }
 
 interface messageContextAggregator {
