@@ -10,7 +10,7 @@
     ],
 
     "background": {
-        "scripts": ["eventAggregator.js", "main.js" ],
+        "scripts": ["sendMessageHandler.js", "eventAggregator.js", "main.js" ],
         "persistent": false
     }
 }

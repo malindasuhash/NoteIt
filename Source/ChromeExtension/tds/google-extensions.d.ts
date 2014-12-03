@@ -47,5 +47,4 @@ interface eventInfo {
 
 interface msgCallbackLister {
     addListener(func: (request: messageContext) => void): void;
-    addListener(func: (request: messageContextAggregator) => void): void;
 }
